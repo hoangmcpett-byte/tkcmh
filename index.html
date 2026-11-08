@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#101b35">
+<title>Tiết kiệm cùng Mhoang</title>
+<style>
+:root{--navy:#101b35;--navy2:#172746;--blue:#5278f5;--cyan:#49c6c1;--bg:#f4f7fc;--card:#fff;--ink:#18243b;--muted:#8490a5;--line:#e8edf5;--green:#169b77;--red:#df6173;--shadow:0 12px 34px rgba(22,39,72,.07)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}button,input,select{font:inherit}button{cursor:pointer;border:0}.hidden{display:none!important}
+.auth-wrap{min-height:100vh;display:grid;place-items:center;padding:24px;background:radial-gradient(circle at 15% 15%,#dfe8ff 0,transparent 30%),radial-gradient(circle at 85% 80%,#d8f5ef 0,transparent 28%),#f5f7fc}
+.auth-card{width:min(100%,440px);background:#fff;border:1px solid #e9edf5;border-radius:26px;padding:32px;box-shadow:0 25px 70px #233c6817;animation:rise .5s ease both}
+.logo-mark{width:48px;height:48px;border-radius:16px;background:linear-gradient(135deg,#5579f6,#42c7bd);display:grid;place-items:center;color:white;font-size:24px;box-shadow:0 8px 18px #5278f544}
+.auth-title{font-size:26px;letter-spacing:-.8px;margin:18px 0 4px}.sub{color:var(--muted);margin:0 0 22px}
+.tabs{display:flex;background:#f2f5fa;padding:5px;border-radius:13px;gap:4px;margin:22px 0}.tabs button{flex:1;background:transparent;color:#718098;border-radius:10px;padding:10px;font-weight:700}.tabs button.active{background:white;color:var(--navy);box-shadow:0 2px 8px #18243b12}
+label{display:block;font-size:13px;font-weight:700;color:#526078;margin:14px 0 7px}input,select{width:100%;border:1px solid #dfe5ef;background:#fff;border-radius:12px;padding:12px 13px;outline:none;color:var(--ink);transition:.2s}input:focus,select:focus{border-color:#7895ff;box-shadow:0 0 0 4px #5278f51a}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:12px;padding:11px 16px;background:linear-gradient(135deg,#5278f5,#4265df);color:#fff;font-weight:750;box-shadow:0 7px 16px #5278f52b;transition:transform .18s,box-shadow .18s,filter .18s}.btn:hover{transform:translateY(-2px);filter:brightness(1.04);box-shadow:0 10px 20px #5278f53b}.btn:active{transform:scale(.98)}.btn.full{width:100%;margin-top:20px}.btn.soft{background:#eef2ff;color:#4c68d9;box-shadow:none}.btn.ghost{background:#f0f3f8;color:#56647b;box-shadow:none}.btn.danger{background:#fff0f2;color:#ce5368;box-shadow:none}
+.msg{min-height:20px;color:var(--red);font-size:13px;margin-top:10px}.notice{font-size:12px;color:#8b7950;background:#fff9e9;border:1px solid #f6edcf;padding:11px 12px;border-radius:11px;margin-top:20px}
+.app-shell{min-height:100vh;display:grid;grid-template-columns:248px minmax(0,1fr)}
+.sidebar{background:linear-gradient(180deg,#111d38,#182b4e);color:#dce5f8;padding:25px 17px;display:flex;flex-direction:column;position:sticky;top:0;height:100vh}
+.side-brand{display:flex;align-items:center;gap:11px;padding:0 10px 30px;font-weight:850;font-size:17px;letter-spacing:-.4px}.side-brand .logo-mark{width:40px;height:40px;border-radius:13px;font-size:20px}
+.side-label{font-size:10px;letter-spacing:1.5px;color:#7184a8;font-weight:800;padding:0 12px;margin:14px 0 8px}
+.nav-btn{width:100%;display:flex;align-items:center;gap:12px;text-align:left;background:transparent;color:#aab8d1;padding:12px;border-radius:12px;font-weight:650;margin:2px 0;transition:.2s}.nav-btn .ico{width:21px;text-align:center;font-size:17px}.nav-btn:hover,.nav-btn.active{background:#ffffff13;color:white}.nav-btn.active{box-shadow:inset 3px 0 #65d4ca}
+.side-bottom{margin-top:auto;border-top:1px solid #ffffff16;padding:18px 8px 0;color:#8fa0bf;font-size:12px}
+.main{min-width:0;padding:26px clamp(16px,3vw,42px) 44px;max-width:1500px;width:100%;margin:auto}
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:28px}.eyebrow{font-size:12px;color:var(--muted);font-weight:700;letter-spacing:.5px}.page-title{font-size:25px;letter-spacing:-.8px;margin:2px 0 0}.profile{display:flex;align-items:center;gap:10px}.avatar{width:40px;height:40px;border-radius:14px;background:linear-gradient(135deg,#dce6ff,#d7f6ef);display:grid;place-items:center;color:#4265ca;font-weight:850}.profile-name{font-weight:750;font-size:13px}.profile-caption{font-size:11px;color:var(--muted)}
+.welcome{background:linear-gradient(110deg,#263f79,#4f70df 65%,#6e7ce8);color:white;border-radius:22px;padding:25px 28px;position:relative;overflow:hidden;box-shadow:0 14px 30px #3655aa24;margin-bottom:20px}.welcome:before,.welcome:after{content:"";position:absolute;border:1px solid #ffffff25;border-radius:50%;pointer-events:none}.welcome:before{width:210px;height:210px;right:6%;top:-135px;box-shadow:0 0 0 25px #ffffff09,0 0 0 50px #ffffff08}.welcome:after{width:140px;height:140px;right:-35px;bottom:-100px}.welcome h2{font-size:22px;margin:0 0 5px;letter-spacing:-.5px}.welcome p{color:#d9e3ff;margin:0;font-size:13px}.welcome .welcome-row{display:flex;justify-content:space-between;align-items:center;gap:15px;position:relative;z-index:1}.welcome .btn{background:#fff;color:#3454bb;box-shadow:none}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px;margin-bottom:20px}.stat-card,.panel{background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow)}.stat-card{padding:18px 19px;min-width:0;transition:transform .2s,box-shadow .2s}.stat-card:hover{transform:translateY(-3px);box-shadow:0 16px 32px #1c315012}.stat-top{display:flex;align-items:center;justify-content:space-between;gap:8px;color:var(--muted);font-size:12px;font-weight:700}.stat-icon{width:34px;height:34px;border-radius:11px;display:grid;place-items:center;font-size:16px;background:#edf2ff;color:#5575e8}.stat-card:nth-child(2) .stat-icon{background:#e8f8f4;color:#1a9c7d}.stat-card:nth-child(3) .stat-icon{background:#fff2e7;color:#e49a47}.stat-value{font-size:clamp(19px,2.2vw,26px);font-weight:850;letter-spacing:-.7px;margin:13px 0 2px;overflow-wrap:anywhere}.stat-foot{font-size:11px;color:var(--muted)}
+.content-grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(280px,.8fr);gap:18px;margin-bottom:18px}.panel{padding:21px;min-width:0}.panel-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:17px}.panel-title{font-size:16px;font-weight:800;letter-spacing:-.3px;margin:0}.panel-desc{font-size:12px;color:var(--muted);margin:3px 0 0}
+.goal-amount{font-size:24px;font-weight:850;letter-spacing:-.6px;margin:5px 0}.goal-meta{display:flex;justify-content:space-between;gap:10px;color:var(--muted);font-size:12px}.progress{height:10px;background:#edf1f8;border-radius:20px;overflow:hidden;margin:16px 0 10px}.progress-fill{height:100%;width:0;border-radius:20px;background:linear-gradient(90deg,#4f76f4,#48c8b7);transition:width .8s cubic-bezier(.2,.8,.2,1);position:relative}.progress-fill:after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,transparent,#ffffff70,transparent);transform:translateX(-100%);animation:shine 2.5s infinite}
+.goal-bottom{display:flex;align-items:center;gap:10px;margin-top:17px;padding-top:15px;border-top:1px solid var(--line)}.goal-badge{background:#eaf8f4;color:#16896e;padding:6px 9px;border-radius:8px;font-size:11px;font-weight:800}
+form .form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}.form-actions{display:flex;gap:9px;margin-top:14px;flex-wrap:wrap}.form-actions .btn{flex:1}
+.history{display:grid;gap:0}.transaction{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 0;border-bottom:1px solid #eef1f6;animation:rise .3s ease both}.transaction:last-child{border-bottom:0}.tx-left{display:flex;align-items:center;gap:11px;min-width:0}.tx-icon{width:38px;height:38px;flex:0 0 38px;border-radius:12px;display:grid;place-items:center;background:#e9f8f3;color:#159a77}.tx-icon.out{background:#fff0f2;color:#d65a70}.tx-name{font-weight:750;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:260px}.tx-date{font-size:11px;color:var(--muted)}.tx-amount{font-weight:850;white-space:nowrap;font-size:13px}.tx-amount.in{color:#159a77}.tx-amount.out{color:#d65a70}
+.empty{padding:28px 12px;text-align:center;color:var(--muted);border:1px dashed #dce3ef;border-radius:13px;font-size:13px}.bottom-note{color:#9aa5b7;font-size:11px;text-align:center;padding:22px 0 0}
+#goalAmount{margin-top:6px}.mobile-menu{display:none}
+@keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}@keyframes shine{to{transform:translateX(100%)}}
+@media(max-width:950px){.app-shell{grid-template-columns:78px minmax(0,1fr)}.sidebar{padding:22px 10px}.side-brand{justify-content:center;padding:0 0 28px}.side-brand .brand-text,.nav-btn .nav-text,.side-label,.side-bottom{display:none}.nav-btn{justify-content:center;padding:13px}.nav-btn .ico{font-size:19px}.content-grid{grid-template-columns:1fr}}
+@media(max-width:650px){.app-shell{display:block;padding-bottom:70px}.sidebar{position:fixed;z-index:10;top:auto;bottom:0;left:0;right:0;height:64px;width:100%;padding:7px 12px;display:flex;flex-direction:row;justify-content:space-around;box-shadow:0 -8px 25px #18243b12}.side-brand,.side-label,.side-bottom{display:none}.nav-btn{width:auto;flex:1;justify-content:center;margin:0;padding:8px 4px;border-radius:10px}.nav-btn .nav-text{display:none}.main{padding:20px 14px 30px}.topbar{margin-bottom:18px}.page-title{font-size:21px}.profile-name,.profile-caption{display:none}.welcome{padding:21px;border-radius:18px}.welcome h2{font-size:19px}.welcome .btn{padding:9px 11px;font-size:12px}.stats{grid-template-columns:1fr 1fr;gap:10px}.stat-card{padding:14px}.stat-card:first-child{grid-column:1/-1}.stat-value{font-size:21px}.panel{padding:17px}.form-row{grid-template-columns:1fr!important}.tx-name{max-width:175px}.auth-card{padding:25px 21px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<section id="authView" class="auth-wrap">
+ <div class="auth-card">
+  <div class="logo-mark">✦</div>
+  <h1 class="auth-title">Tiết kiệm cùng Mhoang</h1>
+  <p class="sub">Quản lý tiền thông minh. Chạm tới mục tiêu của bạn.</p>
+  <div class="tabs"><button id="loginTab" class="active" type="button">Đăng nhập</button><button id="registerTab" type="button">Tạo tài khoản</button></div>
+  <form id="authForm">
+   <label for="username">Tên tài khoản</label><input id="username" autocomplete="username" minlength="3" maxlength="32" required placeholder="Ví dụ: mhoang123">
+   <label for="password">Mật khẩu</label><input id="password" type="password" autocomplete="current-password" minlength="6" required placeholder="Tối thiểu 6 ký tự">
+   <div id="confirmWrap" class="hidden"><label for="confirm">Xác nhận mật khẩu</label><input id="confirm" type="password" autocomplete="new-password" minlength="6" placeholder="Nhập lại mật khẩu"></div>
+   <button class="btn full" id="authSubmit" type="submit">Đăng nhập →</button><div id="authMsg" class="msg" role="status"></div>
+  </form>
+  <div class="notice">Bản hiện tại lưu dữ liệu trong trình duyệt trên thiết bị này. Chưa có máy chủ đồng bộ giữa các thiết bị; không sử dụng mật khẩu quan trọng.</div>
+ </div>
+</section>
+
+<div id="appView" class="app-shell hidden">
+ <aside class="sidebar">
+  <div class="side-brand"><div class="logo-mark">✦</div><span class="brand-text">Mhoang<span style="display:block;font-size:10px;color:#8fa5d0;font-weight:600;letter-spacing:1.3px">SAVINGS SPACE</span></span></div>
+  <div class="side-label">KHÔNG GIAN CỦA BẠN</div>
+  <button class="nav-btn active" data-scroll="overview"><span class="ico">▦</span><span class="nav-text">Tổng quan</span></button>
+  <button class="nav-btn" data-scroll="transactions"><span class="ico">↕</span><span class="nav-text">Giao dịch</span></button>
+  <button class="nav-btn" data-scroll="manage"><span class="ico">◎</span><span class="nav-text">Mục tiêu & khoản tiền</span></button>
+  <div class="side-bottom">Một thói quen nhỏ hôm nay,<br>một tương lai vững vàng ngày mai.</div>
+  <button class="nav-btn" id="logout"><span class="ico">⇥</span><span class="nav-text">Đăng xuất</span></button>
+ </aside>
+ <main class="main">
+  <div class="topbar"><div><div class="eyebrow">KHÔNG GIAN TÀI CHÍNH CÁ NHÂN</div><h1 class="page-title">Tổng quan</h1></div><div class="profile"><div class="avatar" id="avatar">M</div><div><div class="profile-name" id="profileName">Mhoang</div><div class="profile-caption">Thành viên</div></div></div></div>
+  <section id="overview">
+   <div class="welcome"><div class="welcome-row"><div><h2>Chào mừng trở lại, <span id="welcomeName">bạn</span>! 👋</h2><p>Mỗi khoản nhỏ hôm nay sẽ tạo nên khác biệt ngày mai.</p></div><button class="btn" id="focusAdd">＋ Ghi khoản tiền</button></div></div>
+   <div class="stats">
+    <article class="stat-card"><div class="stat-top"><span>TỔNG TIỀN HIỆN CÓ</span><span class="stat-icon">◈</span></div><div class="stat-value" id="balance">0 ₫</div><div class="stat-foot">Số dư tiết kiệm hiện tại</div></article>
+    <article class="stat-card"><div class="stat-top"><span>MỤC TIÊU CỦA BẠN</span><span class="stat-icon">◎</span></div><div class="stat-value" id="goal">0 ₫</div><div class="stat-foot">Mức tiền bạn muốn đạt được</div></article>
+    <article class="stat-card"><div class="stat-top"><span>TIẾN ĐỘ</span><span class="stat-icon">↗</span></div><div class="stat-value" id="percent">0%</div><div class="stat-foot">Phần trăm hoàn thành mục tiêu</div></article>
+   </div>
+  </section>
+  <div class="content-grid">
+   <section class="panel">
+    <div class="panel-head"><div><h2 class="panel-title">🎯 Tiến độ mục tiêu</h2><p class="panel-desc">Theo dõi hành trình chạm tới mục tiêu</p></div><button class="btn soft" id="editGoal">Chỉnh sửa</button></div>
+    <div class="eyebrow">MỤC TIÊU TIẾT KIỆM</div><div class="goal-amount" id="goalLarge">1.000.000 ₫</div>
+    <div class="progress"><div class="progress-fill" id="progressFill"></div></div>
+    <div class="goal-meta"><span id="goalPercent">0% hoàn thành</span><span id="goalRemaining">Còn 1.000.000 ₫</span></div>
+    <div class="goal-bottom"><span class="goal-badge" id="goalBadge">Đang thực hiện</span><span class="panel-desc" id="goalMessage">Kiên trì từng ngày nhé!</span></div>
+   </section>
+   <section class="panel" id="manage">
+    <div class="panel-head"><div><h2 class="panel-title">💰 Ghi khoản tiền</h2><p class="panel-desc">Thêm tiền tiết kiệm hoặc ghi nhận khoản rút</p></div></div>
+    <form id="entryForm">
+     <div class="form-row"><div><label for="kind">Loại giao dịch</label><select id="kind"><option value="in">＋ Tiết kiệm thêm</option><option value="out">− Rút tiền</option></select></div><div><label for="amount">Số tiền (VNĐ)</label><input id="amount" type="number" min="1" step="1000" required placeholder="VD: 50.000"></div></div>
+     <label for="note">Ghi chú</label><input id="note" maxlength="100" placeholder="VD: Tiền tiêu vặt, tiền thưởng...">
+     <div class="form-actions"><button class="btn" type="submit">Lưu giao dịch</button></div><div id="entryMsg" class="msg" role="status"></div>
+    </form>
+    <div style="border-top:1px solid var(--line);margin:18px 0 15px"></div>
+    <form id="goalForm"><label for="goalAmount">Điều chỉnh mục tiêu (VNĐ)</label><input id="goalAmount" type="number" min="1" step="1000" required placeholder="VD: 3.000.000"><div class="form-actions"><button class="btn soft" type="submit">Lưu mục tiêu</button></div><div id="goalMsg" class="msg" role="status"></div></form>
+   </section>
+  </div>
+  <section class="panel" id="transactions">
+   <div class="panel-head"><div><h2 class="panel-title">Lịch sử giao dịch</h2><p class="panel-desc">Các khoản tiền bạn đã ghi nhận gần đây</p></div><button class="btn danger" id="clearHistory">Xóa lịch sử</button></div>
+   <div id="history" class="history"></div>
+  </section>
+  <div class="bottom-note">TIẾT KIỆM CÙNG MHOANG · QUẢN LÝ TÀI CHÍNH CÁ NHÂN</div>
+ </main>
+</div>
+<script>
+const $=id=>document.getElementById(id),KEY='ongheo_savings_v1';
+let accounts=loadStore(),mode='login',currentUser=null;
+function loadStore(){try{return JSON.parse(localStorage.getItem(KEY))||{users:{}}}catch(e){return{users:{}}}}
+function saveStore(){localStorage.setItem(KEY,JSON.stringify(accounts))}
+function money(n){return new Intl.NumberFormat('vi-VN',{style:'currency',currency:'VND',maximumFractionDigits:0}).format(n)}
+function fallbackHash(s){let h=2166136261;for(const b of new TextEncoder().encode(s)){h^=b;h=Math.imul(h,16777619)}return'fallback-'+(h>>>0).toString(16)}
+async function shaHash(s){if(!window.crypto?.subtle)return null;const d=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(s));return Array.from(new Uint8Array(d)).map(x=>x.toString(16).padStart(2,'0')).join('')}
+async function hashes(s){return [await shaHash(s),fallbackHash(s)].filter(Boolean)}
+function setMode(m){mode=m;$('loginTab').classList.toggle('active',m==='login');$('registerTab').classList.toggle('active',m==='register');$('confirmWrap').classList.toggle('hidden',m!=='register');$('confirm').required=m==='register';$('authSubmit').textContent=m==='login'?'Đăng nhập →':'Tạo tài khoản →';$('authMsg').textContent='';$('password').autocomplete=m==='login'?'current-password':'new-password'}
+$('loginTab').onclick=()=>setMode('login');$('registerTab').onclick=()=>setMode('register');
+$('authForm').addEventListener('submit',async e=>{e.preventDefault();$('authMsg').textContent='';const name=$('username').value.trim().toLowerCase(),pw=$('password').value;if(!/^[a-z0-9_.-]{3,32}$/.test(name))return $('authMsg').textContent='Tên tài khoản cần 3–32 ký tự (chữ thường, số, . _ -).';if(pw.length<6)return $('authMsg').textContent='Mật khẩu cần ít nhất 6 ký tự.';const hs=await hashes(pw);
+ if(mode==='register'){if(accounts.users[name])return $('authMsg').textContent='Tên tài khoản đã tồn tại.';if(pw!==$('confirm').value)return $('authMsg').textContent='Mật khẩu xác nhận chưa khớp.';accounts.users[name]={passwordHash:hs[0]||hs[1],balance:0,goal:1000000,transactions:[]};saveStore()}
+ else{const u=accounts.users[name];if(!u||!hs.includes(u.passwordHash))return $('authMsg').textContent='Tên tài khoản hoặc mật khẩu không đúng.';if(hs[0]&&u.passwordHash!==hs[0]){u.passwordHash=hs[0];saveStore()}}
+ currentUser=name;showApp()});
+function showApp(){$('authView').classList.add('hidden');$('appView').classList.remove('hidden');$('profileName').textContent=currentUser;$('welcomeName').textContent=currentUser;$('avatar').textContent=currentUser[0].toUpperCase();render()}
+function logout() {currentUser=null;$('appView').classList.add('hidden');$('authView').classList.remove('hidden');$('authForm').reset();setMode('login')}
+$('logout').onclick=logout;
+function user(){return accounts.users[currentUser]}
+function render(){const u=user();$('balance').textContent=money(u.balance);$('goal').textContent=money(u.goal);$('goalLarge').textContent=money(u.goal);const pct=u.goal>0?Math.min(100,Math.round(u.balance/u.goal*100)):0;$('percent').textContent=pct+'%';$('goalPercent').textContent=pct+'% hoàn thành';$('progressFill').style.width=pct+'%';$('goalRemaining').textContent=u.balance>=u.goal?'Đã đạt mục tiêu':`Còn ${money(Math.max(0,u.goal-u.balance))}`;$('goalBadge').textContent=pct>=100?'Hoàn thành 🎉':pct>=70?'Sắp về đích':'Đang thực hiện';$('goalMessage').textContent=pct>=100?'Bạn đã làm được điều tuyệt vời!':'Kiên trì từng ngày nhé!';$('goalAmount').value=u.goal;
+ const list=$('history');list.innerHTML='';if(!u.transactions.length){list.innerHTML='<div class="empty">Chưa có giao dịch nào.<br>Hãy ghi khoản tiết kiệm đầu tiên của bạn nhé!</div>';return}
+ [...u.transactions].slice(-12).reverse().forEach(t=>{const row=document.createElement('div');row.className='transaction';const left=document.createElement('div');left.className='tx-left';const icon=document.createElement('div');icon.className='tx-icon'+(t.kind==='out'?' out':'');icon.textContent=t.kind==='in'?'↙':'↗';const info=document.createElement('div');info.style.minWidth='0';const title=document.createElement('div');title.className='tx-name';title.textContent=t.note|| (t.kind==='in'?'Tiết kiệm thêm':'Rút tiền');const date=document.createElement('div');date.className='tx-date';date.textContent=new Date(t.date).toLocaleString('vi-VN');info.append(title,date);left.append(icon,info);const val=document.createElement('div');val.className='tx-amount '+(t.kind==='in'?'in':'out');val.textContent=(t.kind==='in'?'+':'−')+money(t.amount);row.append(left,val);list.append(row)})}
+$('entryForm').addEventListener('submit',e=>{e.preventDefault();$('entryMsg').textContent='';const amount=Number($('amount').value),kind=$('kind').value,note=$('note').value.trim();if(!Number.isFinite(amount)||amount<=0)return $('entryMsg').textContent='Vui lòng nhập số tiền hợp lệ.';if(kind==='out'&&amount>user().balance)return $('entryMsg').textContent='Số tiền rút vượt quá số dư hiện tại.';user().balance+=kind==='in'?amount:-amount;user().transactions.push({kind,amount,note,date:new Date().toISOString()});saveStore();$('entryForm').reset();render();$('entryMsg').textContent='Đã lưu giao dịch thành công.'});
+$('goalForm').addEventListener('submit',e=>{e.preventDefault();const amount=Number($('goalAmount').value);if(!Number.isFinite(amount)||amount<=0)return $('goalMsg').textContent='Vui lòng nhập mục tiêu hợp lệ.';user().goal=amount;saveStore();render();$('goalMsg').textContent='Đã cập nhật mục tiêu.'});
+$('editGoal').onclick=()=>$('goalAmount').focus();$('focusAdd').onclick=()=>{$('amount').focus();$('manage').scrollIntoView({behavior:'smooth',block:'center'})};
+$('clearHistory').onclick=()=>{if(confirm('Xóa toàn bộ lịch sử và đặt số dư về 0? Thao tác này không thể hoàn tác.')){user().transactions=[];user().balance=0;saveStore();render()}};
+document.querySelectorAll('[data-scroll]').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.nav-btn').forEach(x=>x.classList.remove('active'));b.classList.add('active');$(b.dataset.scroll).scrollIntoView({behavior:'smooth',block:'start'})}));
+</script>
+</body>
+</html>
